@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -650.0
 @export_range(0,1) var deceleration := 0.05
-@export_range(0,1) var acceleration := 0.05
+@export_range(0,1) var acceleration := 0.2
 var decelerating := false
 
 # Hold jump longer to jump higher. Release early to jump shorter.
@@ -27,13 +27,13 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta * fall_gravity
 		else:
 			velocity += get_gravity() * delta
-
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y *= decelerate_on_jump_release
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	#Replaced ui_left and ui_right with player controller actions not associated with the UI
 	var direction := Input.get_axis("move_left", "move_right")
@@ -57,5 +57,5 @@ func _physics_process(delta: float) -> void:
 		player_sprite.play("jump")
 	else:
 		player_sprite.play("idle")
-
+	
 	move_and_slide()
