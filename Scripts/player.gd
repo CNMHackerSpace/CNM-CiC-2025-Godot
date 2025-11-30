@@ -8,6 +8,9 @@ extends CharacterBody2D
 #Changed player variables here to show them in editor for easier gameplay modifications.
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -650.0
+@export_range(0,1) var deceleration := 0.05
+@export_range(0,1) var acceleration := 0.05
+var decelerating := false
 
 # Hold jump longer to jump higher. Release early to jump shorter.
 @export_range(0,1) var decelerate_on_jump_release := 0.5
@@ -35,14 +38,19 @@ func _physics_process(delta: float) -> void:
 	#Replaced ui_left and ui_right with player controller actions not associated with the UI
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = move_toward(velocity.x, direction*SPEED, SPEED*acceleration)
 		player_sprite.flip_h = velocity.x < 0
+		decelerating = false
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED*deceleration)
+		decelerating = true
 	
 	#Pick sprite animation based on velocity
 	if is_on_floor() && velocity.x != 0:
-		player_sprite.play("walk")
+		if decelerating:
+			player_sprite.play("decelerate")
+		else:
+			player_sprite.play("walk")
 	elif velocity.y > 0:
 		player_sprite.play("falling")
 	elif velocity.y < 0:
