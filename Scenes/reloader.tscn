@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcvngvgs63idi"]
+
+[ext_resource type="Script" uid="uid://cuvnmleadjuix" path="res://Scripts/LevelItemScripts/reloader.gd" id="1_mk1en"]
+[ext_resource type="PackedScene" uid="uid://hjay2682ja3b" path="res://Scenes/entropy_effects.tscn" id="2_mk1en"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx4q3"]
+size = Vector2(121, 121)
+
+[node name="Reloader" type="Area2D"]
+script = ExtResource("1_mk1en")
+quantity_available = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_gx4q3")
+
+[node name="EntropyEffect" parent="." instance=ExtResource("2_mk1en")]
+position = Vector2(0, -4)
+
+[connection signal="body_entered" from="." to="." method="_on_area_2d_body_entered"]

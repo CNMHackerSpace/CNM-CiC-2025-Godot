@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://rvkkfnp3gubt" path="res://Scripts/game_manager.gd" id="1_1kr3c"]
 [ext_resource type="PackedScene" uid="uid://hccuyc1k1gj5" path="res://Scenes/Player.tscn" id="1_123nd"]
-[ext_resource type="Script" uid="uid://dchcbaq2hy8s6" path="res://Scripts/portal.gd" id="3_k0vyt"]
-[ext_resource type="Texture2D" uid="uid://dj6hs13bg7k3c" path="res://Textures/spritesheet-tiles-default.png" id="4_fbp4u"]
+[ext_resource type="Script" uid="uid://dchcbaq2hy8s6" path="res://Scripts/LevelItemScripts/portal.gd" id="3_k0vyt"]
+[ext_resource type="Texture2D" uid="uid://dj6hs13bg7k3c" path="res://Textures/Spritesheets/spritesheet-tiles-default.png" id="4_fbp4u"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xrwdg"]
 
