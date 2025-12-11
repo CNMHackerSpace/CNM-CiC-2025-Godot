@@ -120,6 +120,24 @@ position = Vector2(-816.00006, 454)
 scale = Vector2(3.406, 4)
 texture = ExtResource("9_u8m4s")
 
+[node name="TEMP_TUTORIAL" type="Node2D" parent="LevelElements"]
+position = Vector2(-798.865, 0.66)
+
+[node name="Label" type="Label" parent="LevelElements/TEMP_TUTORIAL"]
+offset_left = -156.73499
+offset_top = 471.56
+offset_right = 219.26501
+offset_bottom = 624.56
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "TEMP TUTORIAL:
+
+After collecting \"entropy\", your ammo refills
+Use right click(adjacent to already existing blocks) to spend ammo to add temporary blocks to the world
+temp blocks will decay over several seconds"
+autowrap_mode = 2
+
 [node name="PlayerBuildController" type="Node2D" parent="." node_paths=PackedStringArray("interactive_tilemap", "main_tilemap")]
 script = ExtResource("9_gx4q3")
 interactive_tilemap = NodePath("../InteractiveTilemap")
