@@ -1,5 +1,7 @@
 extends Control
 
+#script to control hud elements
+
 @onready var hp_text = $HPCounter
 @onready var ammo_text = $AmmoCounter
 

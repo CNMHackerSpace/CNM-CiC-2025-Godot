@@ -12,6 +12,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	#move bullet in its specific direction, delete once it impacs a collider
 	direction = direction.normalized()
 	position += direction * speed * _delta
 	if delete:
@@ -26,6 +27,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	#random chance to spawn an entropy puddle on colliding with terrain
 	else: 
 		var r = randi_range(1,10)
+		#creates a new reloader with 1 ammo 1 in 10 shots
 		if r == 10:
 			#print("Spawning", global_position)
 			var new_reloader = RELOAD_OBJECT.instantiate()

@@ -1,5 +1,7 @@
 extends Node2D
 
+#Script to force the crosshair to follow the cursor, currently does not properly remove 
+#the hardware cursor
 @export var player_node: Node2D = null
 
 func _ready() -> void:
