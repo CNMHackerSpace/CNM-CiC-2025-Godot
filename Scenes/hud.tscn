@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxy0tu3wi0iwi"]
+
+[ext_resource type="Script" uid="uid://cn21n4qcd1fov" path="res://Scripts/UIScripts/hud.gd" id="1_e0onf"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_e0onf")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HPCounter" type="Label" parent="."]
+layout_mode = 0
+offset_right = 146.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "HP: 6 (placeholder)"
+
+[node name="AmmoCounter" type="Label" parent="."]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 175.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ammo: 0/3"

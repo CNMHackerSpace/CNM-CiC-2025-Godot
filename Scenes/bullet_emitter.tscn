@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://c58qkjh5qdp3t"]
+
+[ext_resource type="Script" uid="uid://c01l12ceifbhn" path="res://Scripts/EnemyScripts/bullet_emitter.gd" id="1_p2n8w"]
+[ext_resource type="Texture2D" uid="uid://c1whg0kiwcal3" path="res://Textures/Spritesheets/spritesheet-enemies-default.png" id="2_hdkvq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idk1j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8m4s"]
+atlas = ExtResource("2_hdkvq")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_303on"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8m4s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BulletEmitter" type="Area2D" node_paths=PackedStringArray("bullet_spawn", "bullet_parent_node")]
+script = ExtResource("1_p2n8w")
+bullet_spawn = NodePath("BulletSpawnPoint")
+bullet_parent_node = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_idk1j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_303on")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]

@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 #Get a reference to the animated sprite node attached to the Player root node
 @onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hud_controller = get_node("/root/Main/UICanvas/HUD")
 
 #Changed player variables here to show them in editor for easier gameplay modifications.
 @export var SPEED = 300.0
@@ -12,12 +13,32 @@ extends CharacterBody2D
 @export_range(0,1) var acceleration := 0.2
 var decelerating := false
 
+#Variables for terrain gun, input controller
+@export var build_controller: Node2D 
+var terrain_gun_ammo:int = 0
+var terrain_gun_ammo_max:int = 3
+
+var player_hp = 6
+var player_max_hp = 6
+
 # Hold jump longer to jump higher. Release early to jump shorter.
 @export_range(0,1) var decelerate_on_jump_release := 0.5
 
 # Magnifier for gravity on the way down for a snappier jump feel
 @export var fall_gravity := 2.0
 
+func _ready() -> void:
+	pass
+	
+
+
+#collect inputs here, pass them to various scripts as needed
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		if terrain_gun_ammo > 0:
+			if build_controller.draw_tile(get_global_mouse_position()):
+				terrain_gun_ammo -= 1
+				hud_controller.update_ammo_text(terrain_gun_ammo)
 
 #For physics processing I changed all inputs away from UI input events
 func _physics_process(delta: float) -> void:
@@ -59,3 +80,10 @@ func _physics_process(delta: float) -> void:
 		player_sprite.play("idle")
 	
 	move_and_slide()
+
+func add_terrain_gun_ammo(_quantity:int) -> void:
+	terrain_gun_ammo += _quantity
+	if terrain_gun_ammo > terrain_gun_ammo_max:
+		terrain_gun_ammo = terrain_gun_ammo_max
+	
+	hud_controller.update_ammo_text(terrain_gun_ammo)

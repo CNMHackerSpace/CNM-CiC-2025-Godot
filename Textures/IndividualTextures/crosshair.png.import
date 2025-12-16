@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1whg0kiwcal3"
-path="res://.godot/imported/spritesheet-enemies-default.png-44c3b4d73798084b0f484945397a896f.ctex"
+uid="uid://dqupkkevm7fm5"
+path="res://.godot/imported/crosshair.png-74ed64f6c5982c888349a3e2855a1a68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/spritesheet-enemies-default.png"
-dest_files=["res://.godot/imported/spritesheet-enemies-default.png-44c3b4d73798084b0f484945397a896f.ctex"]
+source_file="res://Textures/IndividualTextures/crosshair.png"
+dest_files=["res://.godot/imported/crosshair.png-74ed64f6c5982c888349a3e2855a1a68.ctex"]
 
 [params]
 
