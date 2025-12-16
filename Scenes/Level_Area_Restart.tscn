@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkn3tggs310sk"]
+
+[ext_resource type="Script" uid="uid://chwn0auyu1kcb" path="res://Levels/Level01_Tiles_demo/level_restart_area_2d.gd" id="1_io7dd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7e0y"]
+size = Vector2(272, 79)
+
+[node name="LevelRestartArea2D" type="Area2D"]
+script = ExtResource("1_io7dd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(478, 749)
+shape = SubResource("RectangleShape2D_j7e0y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

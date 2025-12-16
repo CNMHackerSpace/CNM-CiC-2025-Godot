@@ -41,3 +41,5 @@ tile_set = ExtResource("3_8fryd")
 
 [node name="Player" parent="." instance=ExtResource("1_wqou8")]
 position = Vector2(97, 529)
+
+[node name="LevelRestartArea2D" parent="." instance=ExtResource("5_2g3i4")]
